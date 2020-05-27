@@ -158,5 +158,11 @@ pipeline {
       }
     }
 
+    stage('test') {
+      steps {
+        archiveArtifacts(onlyIfSuccessful: true, artifacts: 'rew')
+      }
+    }
+
   }
 }
