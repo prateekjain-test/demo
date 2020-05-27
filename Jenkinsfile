@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Git Clone & Setup') {
       steps {
-        echo 'Cloning from Github'
+        slackSend(sendAsText: true, message: 'Pipeline Started', token: 'wJL6PXfMMkDcqRiPoRstGcGu', channel: 'jenkins_builds', teamDomain: 'milvikbima')
       }
     }
 
