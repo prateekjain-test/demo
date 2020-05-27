@@ -30,6 +30,7 @@ pipeline {
         stage('Archive Artifact') {
           steps {
             echo 'Archive Artifact'
+            archiveArtifacts(artifacts: 'build/*.jar', onlyIfSuccessful: true)
           }
         }
 
@@ -155,12 +156,6 @@ pipeline {
           }
         }
 
-      }
-    }
-
-    stage('test') {
-      steps {
-        archiveArtifacts(onlyIfSuccessful: true, artifacts: 'target/*.jar')
       }
     }
 
