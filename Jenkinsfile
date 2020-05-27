@@ -4,6 +4,7 @@ pipeline {
     stage('Git Clone & Setup') {
       steps {
         slackSend(sendAsText: true, message: 'Pipeline Started', token: 'wJL6PXfMMkDcqRiPoRstGcGu', channel: 'jenkins_builds', teamDomain: 'milvikbima')
+        git(url: 'https://github.com/prateekjain-test/demo.git', branch: 'master')
       }
     }
 
@@ -11,7 +12,7 @@ pipeline {
       parallel {
         stage('Build & Unit Test') {
           steps {
-            echo 'Building the code'
+            sh 'mvn clean install'
           }
         }
 
