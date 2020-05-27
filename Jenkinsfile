@@ -160,7 +160,7 @@ pipeline {
 
     stage('test') {
       steps {
-        archiveArtifacts(onlyIfSuccessful: true, artifacts: 'rew')
+        archiveArtifacts(onlyIfSuccessful: true, artifacts: 'target/*.jar')
       }
     }
 
