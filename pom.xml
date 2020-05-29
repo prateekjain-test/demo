@@ -19,7 +19,7 @@
 		<spotbugs.version>3.1.11</spotbugs.version>
 		<pmd.version>3.11.0</pmd.version>
 		<checkstyle.version>8.7</checkstyle.version>
-		<checkstyle.plugin.version>2.17</checkstyle.plugin.version>
+		<maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
 		<maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
 	</properties>
 
@@ -66,15 +66,21 @@
 				<version>${pmd.version}</version>
 			</plugin>
 
-			<!--<plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>${checkstyle.plugin.version}</version>
+				<version>${maven-checkstyle-plugin.version}</version>
 				<configuration>
-					<configLocation>checkstyle.xml</configLocation>
-					<failOnViolation>false</failOnViolation>
+				    <configLocation>google_checks.xml</configLocation>
 				</configuration>
-			</plugin>-->
+				<reportSets>
+				    <reportSet>
+					<reports>
+					    <report>checkstyle</report>
+					</reports>
+				    </reportSet>
+				</reportSets>
+			    </plugin>
 		</plugins>
 	</reporting>
 
@@ -150,19 +156,18 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>${checkstyle.plugin.version}</version>
-				<dependencies>
-					<dependency>
-						<groupId>com.puppycrawl.tools</groupId>
-						<artifactId>checkstyle</artifactId>
-						<version>${checkstyle.version}</version>
-					</dependency>
-				</dependencies>
+				<version>${maven-checkstyle-plugin.version}</version>
 				<configuration>
-					<configLocation>checkstyle.xml</configLocation>
-					<failOnViolation>false</failOnViolation>
+				    <configLocation>google_checks.xml</configLocation>
 				</configuration>
-			</plugin>
+				<executions>
+				    <execution>
+					<goals>
+					    <goal>check</goal>
+					</goals>
+				    </execution>
+				</executions>
+			    </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
