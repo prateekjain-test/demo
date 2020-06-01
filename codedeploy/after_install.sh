@@ -1,7 +1,7 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 parentdir="$(dirname "$DIR")"
-sudo chown -R ubuntu:ubuntu testcodedeploy
+sudo chown -R ubuntu:ubuntu /home/ubuntu/testcodedeploy
 demopid=$(pidof java)
 kill -9 $demopid
 rm -rf /home/ubuntu/testcodedeploy/revision.txt
